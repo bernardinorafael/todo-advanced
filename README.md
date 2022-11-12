@@ -33,12 +33,6 @@ $ npm i
 $ npm run dev
 ```
 
-# Execute o comando abaixo para ter acesso aos dados da API JSON-Server
-
-```bash
-$ npm run server
-```
-
 # Tecnologias
 
 Projeto criado através do Vite, utilizando React e TypeScript
