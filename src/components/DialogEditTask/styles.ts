@@ -28,7 +28,6 @@ export const DialogContent = styled(Dialog.Content)`
   background: ${({ theme }) => theme.colors.gray[800]};
   border-radius: ${({ theme }) => theme.radii.sm};
   border: 1px solid ${({ theme }) => theme.colors.gray[700]};
-  box-shadow: 0px 8px 10px -7px rgba(0, 0, 0, 0.5);
   left: 50%;
   max-height: 85vh;
   max-width: 550px;
@@ -151,7 +150,7 @@ export const CloseDialogButton = styled.button`
 
 export const DialogOverlay = styled(Dialog.Overlay)`
   animation: ${overlayAnimation} 150ms cubic-bezier(0.16, 1, 0.3, 1);
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.05);
   inset: 0;
   position: fixed;
 `

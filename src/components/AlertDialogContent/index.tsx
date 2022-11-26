@@ -2,12 +2,12 @@ import * as AlertDialog from "@radix-ui/react-alert-dialog"
 import { useContext } from "react"
 import { TaskContext } from "../../context/TaskContext"
 import {
-	AlertDialogContainer,
-	AlertDialogDescription,
-	AlertDialogOverlay,
-	AlertDialogTitle,
-	ButtonCancel,
-	ButtonConfirmDelete
+  AlertDialogContainer,
+  AlertDialogDescription,
+  AlertDialogOverlay,
+  AlertDialogTitle,
+  ButtonCancel,
+  ButtonConfirmDelete,
 } from "./styles"
 
 interface AlertDialogContentProps {

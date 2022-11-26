@@ -47,7 +47,7 @@ export const AlertDialogTitle = styled(AlertDialog.Title)`
 `
 
 export const AlertDialogDescription = styled(AlertDialog.Description)`
-font-size: ${({ theme }) => theme.fontSize.lg};
+  font-size: ${({ theme }) => theme.fontSize.lg};
   color: ${({ theme }) => theme.colors.gray[500]};
   line-height: ${({ theme }) => theme.lineHeight.short};
   margin-bottom: 1.5rem;
@@ -55,7 +55,7 @@ font-size: ${({ theme }) => theme.fontSize.lg};
 
 export const AlertDialogOverlay = styled(AlertDialog.Overlay)`
   animation: ${overlayAnimation} 150ms cubic-bezier(0.16, 1, 0.3, 1);
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.2);
   inset: 0;
   position: fixed;
 `
@@ -64,6 +64,7 @@ export const ButtonCancel = styled.button`
   align-items: center;
   border-radius: ${({ theme }) => theme.radii.xs};
   border: none;
+  cursor: default;
   display: flex;
   font-weight: ${({ theme }) => theme.fontWeight.semibold};
   justify-content: center;
@@ -86,6 +87,7 @@ export const ButtonConfirmDelete = styled.button`
   background: ${({ theme }) => theme.colors.red[50]};
   border-radius: ${({ theme }) => theme.radii.xs};
   border: none;
+  cursor: default;
   color: ${({ theme }) => theme.colors.red[300]};
   display: flex;
   font-weight: ${({ theme }) => theme.fontWeight.semibold};

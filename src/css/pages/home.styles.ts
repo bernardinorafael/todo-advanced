@@ -3,20 +3,19 @@ import styled, { keyframes } from "styled-components"
 
 export const Container = styled.div`
   align-items: center;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: 3rem 1rem 0;
   gap: 2rem;
-  margin: auto;
-  width: 100%;
+  margin: 1rem auto 3rem;
   max-width: 820px;
+  padding: 3rem 1rem 0;
+  width: 100%;
 
   > div:first-child {
-    display: flex;
     align-items: center;
-    gap: 1rem;
     border-bottom: 3px solid ${({ theme }) => theme.colors.violet[500]};
+    display: flex;
+    gap: 1rem;
     padding-bottom: 0.5rem;
 
     h1 {
@@ -44,11 +43,11 @@ export const Container = styled.div`
 export const Item = styled.div`
   align-items: center;
   background: ${({ theme }) => theme.colors.gray[700]};
-  display: flex;
+  border-radius: ${({ theme }) => theme.radii.sm};
   box-shadow: 0px 8px 10px -7px rgba(0, 0, 0, 0.5);
+  display: flex;
   gap: 1.5rem;
   padding: 1rem;
-  border-radius: ${({ theme }) => theme.radii.sm};
   width: 100%;
 
   p {
@@ -66,6 +65,7 @@ export const Item = styled.div`
       background: transparent;
       border-radius: ${({ theme }) => theme.radii.sm};
       border: none;
+      cursor: default;
       line-height: 0;
       outline: none;
       padding: 0.4rem;
@@ -104,14 +104,14 @@ export const NewTaskContainer = styled.section`
     input {
       background: ${({ theme }) => theme.colors.gray[700]};
       border-radius: ${({ theme }) => theme.radii.sm};
-      border: 3px solid transparent;
       border-top: 3px solid transparent;
+      border: 3px solid transparent;
       color: ${({ theme }) => theme.colors.gray[100]};
-      width: 100%;
       font-size: ${({ theme }) => theme.fontSize.xl};
       height: 3rem;
       outline: none;
       padding: 0 1rem;
+      width: 100%;
 
       &:focus {
         outline: none;
@@ -137,14 +137,14 @@ const spinnerLoading = keyframes`
 
 export const ButtonNewTask = styled.button`
   align-items: center;
-  display: flex;
-  justify-content: center;
   background: ${({ theme }) => theme.colors.violet[500]};
   border-radius: ${({ theme }) => theme.radii.sm};
   border: none;
   color: ${({ theme }) => theme.colors.gray[100]};
+  display: flex;
   font-weight: ${({ theme }) => theme.fontWeight.bold};
   height: 3rem;
+  justify-content: center;
   outline: none;
   padding: 0.5rem;
   position: relative;
