@@ -1,6 +1,5 @@
 import * as AlertDialog from "@radix-ui/react-alert-dialog"
-import { useContext } from "react"
-import { TaskContext } from "../../context/TaskContext"
+import useTasks from "../../context/TaskContext"
 import {
   AlertDialogContainer,
   AlertDialogDescription,
@@ -10,15 +9,11 @@ import {
   ButtonConfirmDelete,
 } from "./styles"
 
-interface AlertDialogContentProps {
-  id: string
-}
-
-export function AlertDialogContent({ id }: AlertDialogContentProps) {
-  const { deleteTask } = useContext(TaskContext)
+export function AlertDialogContent({ id }: { id: string }) {
+  const { deleteTask } = useTasks()
 
   async function handleDeleteTask(id: string) {
-    await new Promise((resolve) => setTimeout(resolve, 500))
+    await new Promise((resolve) => setTimeout(resolve, 300))
 
     deleteTask(id)
   }

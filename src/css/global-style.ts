@@ -8,15 +8,14 @@ export const GlobalStyle = createGlobalStyle`
 	}
 
 	body {
-		background: ${({ theme }) => theme.colors.gray[900]};
+		background-attachment: fixed;
 		background-image: url("/images/background.svg");
+		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;
-		background-position: center;
-		background-attachment: fixed;
+		background: ${({ theme }) => theme.colors.gray[900]};
 		color: ${({ theme }) => theme.colors.gray[100]};
 	}
-
 
 	body, input, select, textarea, button {
 		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;

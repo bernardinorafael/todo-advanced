@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react"
+import { createContext, useContext, useEffect, useState } from "react"
 import { Task } from "../@types/task"
 
 interface TaskContextProps {
@@ -6,18 +6,17 @@ interface TaskContextProps {
   createNewTask: (data: Task) => void
   deleteTask: (id: string) => void
   updateTask: (id: string, data: string) => void
-  toggleCompleteTask: (id: string, data: boolean) => void
 }
 
 export const TaskContext = createContext({} as TaskContextProps)
 
 export function TaskProvider({ children }: { children: React.ReactNode }) {
-  const currTask = JSON.parse(localStorage.getItem("tasks")!)
+  const storedTask = JSON.parse(localStorage.getItem("@BERNARDINO:TODO-LIST")!)
 
-  const [tasks, setTasks] = useState<Task[] | []>(currTask ?? [])
+  const [tasks, setTasks] = useState<Task[] | []>(storedTask ?? [])
 
   useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(tasks))
+    localStorage.setItem("@BERNARDINO:TODO-LIST", JSON.stringify(tasks))
   }, [tasks])
 
   function createNewTask(data: Task) {
@@ -43,22 +42,35 @@ export function TaskProvider({ children }: { children: React.ReactNode }) {
     setTasks(tasksWithoutDeletedOne)
   }
 
-  function toggleCompleteTask(id: string, data: boolean) {
-    setTasks((tasks) => {
-      const newTasks = tasks.map((task) => {
-        if (task.id === id) return { ...task, completed: data }
-        return task
-      })
+  // function toggleCompleteTask(id: string, data: boolean) {
+  //   setTasks((tasks) => {
+  //     const newTasks = tasks.map((task) => {
+  //       if (task.id === id) return { ...task, completed: data }
+  //       return task
+  //     })
 
-      return newTasks
-    })
-  }
+  //     return newTasks
+  //   })
+  // }
 
   return (
     <TaskContext.Provider
-      value={{ updateTask, deleteTask, createNewTask, tasks, toggleCompleteTask }}
+      value={{
+        tasks,
+        updateTask,
+        deleteTask,
+        createNewTask,
+      }}
     >
       {children}
     </TaskContext.Provider>
   )
+}
+
+export default function useTasks() {
+  const context = useContext(TaskContext)
+
+  if (!context) throw new Error("useTask cannot be used within TaskContext")
+
+  return context
 }

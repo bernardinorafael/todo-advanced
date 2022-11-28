@@ -1,4 +1,3 @@
-import * as Checkbox from "@radix-ui/react-checkbox"
 import styled, { keyframes } from "styled-components"
 
 export const Container = styled.div`
@@ -47,7 +46,7 @@ export const Item = styled.div`
   box-shadow: 0px 8px 10px -7px rgba(0, 0, 0, 0.5);
   display: flex;
   gap: 1.5rem;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   width: 100%;
 
   p {
@@ -174,27 +173,5 @@ export const ButtonNewTask = styled.button`
 
   @media (max-width: 414px) {
     width: 100%;
-  }
-`
-
-export const CheckboxRoot = styled(Checkbox.Root)`
-  align-items: center;
-  background-color: ${({ theme }) => theme.colors.gray[800]};
-  border-radius: ${({ theme }) => theme.radii.full};
-  border: none;
-  display: flex;
-  height: 30px;
-  justify-content: center;
-  outline: none;
-  width: 30px;
-
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.violet[300]};
-  }
-
-  &[data-state="checked"] {
-    background: ${({ theme }) => theme.colors.violet[50]};
-    color: ${({ theme }) => theme.colors.violet[500]};
   }
 `

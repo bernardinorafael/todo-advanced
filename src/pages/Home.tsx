@@ -1,22 +1,15 @@
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as AlertDialog from "@radix-ui/react-alert-dialog"
-import * as Checkbox from "@radix-ui/react-checkbox"
 import * as Dialog from "@radix-ui/react-dialog"
 import * as Icon from "phosphor-react"
 import { useContext, useState } from "react"
-import { Controller, useForm } from "react-hook-form"
 import { v4 as uuid } from "uuid"
 import * as y from "yup"
+import { useForm } from "react-hook-form"
 import { AlertDialogContent } from "../components/AlertDialogContent"
 import { DialogEditTaskContent } from "../components/DialogEditTask"
-import { TaskContext } from "../context/TaskContext"
-import {
-  ButtonNewTask,
-  CheckboxRoot,
-  Container,
-  Item,
-  NewTaskContainer,
-} from "../css/pages/home.styles"
+import useTasks, { TaskContext } from "../context/TaskContext"
+import { ButtonNewTask, Container, Item, NewTaskContainer } from "../css/pages/home.styles"
 
 const schema = y.object({
   title: y.string().required("Campo obrigatório"),
@@ -27,10 +20,9 @@ interface TaskForm extends y.InferType<typeof schema> {}
 
 export default function Home() {
   const [openDialog, setOpenDialog] = useState(false)
-  const { tasks } = useContext(TaskContext)
+  const { tasks } = useTasks()
   const { createNewTask } = useContext(TaskContext)
   const {
-    control,
     setFocus,
     register,
     handleSubmit,
@@ -50,7 +42,7 @@ export default function Home() {
   }
 
   async function handleCreateNewTask({ completed, title }: TaskForm) {
-    await new Promise((resolve) => setTimeout(resolve, 800))
+    await new Promise((resolve) => setTimeout(resolve, 500))
 
     createNewTask({
       title,
@@ -88,24 +80,6 @@ export default function Home() {
         {tasks?.map((task) => {
           return (
             <Item key={task.id}>
-              <Controller
-                control={control}
-                name="completed"
-                render={({ field }) => {
-                  return (
-                    <CheckboxRoot
-                      defaultChecked={task.completed}
-                      onCheckedChange={field.onChange}
-                      type="submit"
-                    >
-                      <Checkbox.Indicator asChild>
-                        <Icon.Check size={25} weight="bold" />
-                      </Checkbox.Indicator>
-                    </CheckboxRoot>
-                  )
-                }}
-              />
-
               <p>{task.title}</p>
 
               <div style={{ display: "flex", alignItems: "center", gap: ".5rem" }}>

@@ -64,11 +64,11 @@ export function DialogEditTaskContent({
         <form onSubmit={handleSubmit(handleEditTask)}>
           <input
             autoFocus
-            defaultValue={title}
-            id="edit-task"
-            placeholder="Edite sua tarefa"
             type="text"
+            id="edit-task"
+            defaultValue={title}
             {...register("title")}
+            placeholder="Edite sua tarefa"
           />
           {!isSubmitting ? (
             <ButtonConfirmChanges type="submit">Salvar</ButtonConfirmChanges>
